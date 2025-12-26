@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1 Riyaaaaaa!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="global-stars"></div>
+
+    <!-- Audio Manager -->
+    <audio id="bgm-intro" loop src="intro.mp3"></audio>
+    <audio id="bgm-main" loop src="main.mp3"></audio>
+
+    <!-- Hacker Intro Overlay -->
+    <div id="hacker-intro">
+        <div class="terminal-container">
+            <div id="terminal-text"></div>
+            <div id="command-line" class="hidden">
+                <span class="prompt">root@corino:~$</span>
+                <input type="text" id="hacker-input" autocomplete="off" spellcheck="false">
+            </div>
+            <div id="hacker-hint" class="hidden">[Hint: type "i love you"]</div>
+            <span class="cursor" id="main-cursor">_</span>
+            <button id="skip-intro-btn" class="hidden">Access Mainframe</button>
+        </div>
+    </div>
+
+    <!-- Constellation Hero -->
+    <section id="constellation-hero">
+        <canvas id="constellation-canvas"></canvas>
+        <div class="scroll-indicator-container" style="position:absolute; bottom:20px; width:100%; color: white;">
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="arrow">↓</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Balloons Overlay -->
+    <div id="balloons-container"></div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="content">
+            <h1 class="title">Happy 1, <span class="highlight">Riyaaa!</span></h1>
+            <p class="subtitle">A little surprise for my favorite person.</p>
+
+            <button id="unlock-btn" onclick="showTrivia()">Unlock Your Surprise ✨</button>
+
+
+        </div>
+    </section>
+
+    <!-- Trivia Gate Overlay (Initially Hidden) -->
+    <div id="trivia-gate" class="hidden">
+        <div class="trivia-content">
+            <div class="trivia-header">
+                <h2>Security Check! 🔐</h2>
+                <p>Answer these questions to prove you are Riya!</p>
+            </div>
+
+            <div id="quiz-questions">
+                <!-- Injected by JS -->
+            </div>
+
+            <div class="submit-section">
+                <p id="feedback-msg" class="feedback-msg"></p>
+                <button id="submit-quiz-btn" onclick="submitQuiz()">Check Answers</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROTECTED CONTENT (Hidden by default) -->
+    <div id="protected-content" style="display: none;">
+
+        <!-- Scroll Indicator (Moved here, visible after unlock) -->
+        <div class="scroll-indicator-container">
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="arrow">↓</div>
+            </div>
+        </div>
+
+
+
+        <!-- Memory Lane Section -->
+        <section id="memory-lane">
+            <h2>Happy 1, My Forever Constant</h2>
+            <div class="gallery">
+                <!-- Photo Item 1 -->
+                <div class="memory-card">
+                    <div class="photo-frame">
+                        <!-- Placeholder: User should replace 'src' with their photo -->
+                        <img src="2.jpeg" alt="The Beginning">
+                    </div>
+                    <div class="description">
+                        <h3>Celebrating You Today & Always</h3>
+                        <p>"Hey you, yeah you the cutest person I know!
+                            Just wanted to remind you that you make my heart do that weird happy flutter thing every
+                            single time I see you.
+                            Your smile? Dangerous.
+                            Your eyes? Absolutely Dangerous.
+                            The way you scrunch your nose when you're confused? The most adorable thing ever.
+                            I fall for you more every day, and honestly, I'm not even mad about it.
+                            You're stuck with me now, girl!"</p>
+                    </div>
+                </div>
+
+                <!-- Jigsaw Puzzle Section -->
+                <section id="puzzle-section" class="wide-puzzle">
+                    <div class="puzzle-container glass-panel">
+                        <h2>The Love Puzzle 🧩</h2>
+                        <p>Drag the pieces to complete our picture!</p>
+
+                        <!-- Reference Image (Target) -->
+                        <div class="puzzle-reference">
+                            <p>Goal:</p>
+                            <img src="2.jpeg" alt="Reference Image">
+                        </div>
+
+                        <div id="jigsaw-game-area">
+                            <div id="puzzle-source-container">
+                                <!-- Pieces start here -->
+                            </div>
+                            <div id="puzzle-board">
+                                <!-- Drop Zones -->
+                            </div>
+                        </div>
+
+                        <div id="puzzle-message" class="hidden">
+                            <h3>Perfect! You complete me. ❤️</h3>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STAGE 2: LOCKED UNTIL PUZZLE SOLVED -->
+                <div id="protected-content-2" style="display: none;">
+                    <!-- Photo Item 2 -->
+                    <div class="memory-card reverse">
+                        <div class="photo-frame">
+                            <img src="3.jpeg" alt="Memory 2">
+                        </div>
+                        <div class="description">
+                            <h3>Believe in Your Magic</h3>
+                            <p>"Remember that you are capable of absolutely anything you set your mind to.
+                                There will be challenges, but you're stronger than you know.
+                                Chase what makes your heart happy, surround yourself with people who lift you up and
+                                never doubt your worth.
+                                I believe in you endlessly, and I'll be right here cheering you on through it all."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Photo Item 3 -->
+                    <div class="memory-card">
+                        <div class="photo-frame">
+                            <img src="4.jpeg" alt="Memory 3">
+                        </div>
+                        <div class="description">
+                            <h3>You Are My Today & Tomorrow!</h3>
+                            <p>"They say "the best thing to hold onto in life is each other," and with you, I finally
+                                understand that.
+                                You've shown me that love isn't just a feeling—it's a choice we make every day, a
+                                promise to grow together.
+                                Like stars that shine brightest in darkness, you've been my light through everything.
+                                You are my today and all of my tomorrows, my favorite hello and hardest goodbye.
+                                Forever grateful our paths crossed."</p>
+                        </div>
+                    </div>
+                </div> <!-- End Stage 2 Gallery Wrapper (partial) -->
+            </div>
+        </section>
+
+        <!-- Closing Section -->
+        <section id="footer" class="stage-2-hidden" style="display: none;">
+
+            <!-- FINALE SLIDESHOW (Photos Only) -->
+            <div id="finale-slideshow-container">
+                <!-- Slides injected by JS -->
+            </div>
+
+            <!-- VIMEO VIDEO SECTION -->
+            <div class="video-premiere-container" style="margin: 4rem auto; max-width: 800px; text-align: center;">
+                <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Our Movie 🎥</h3>
+                <div style='padding:177.78% 0 0 0;position:relative;'>
+                    <iframe src="1 Year.mp4"
+                        allow='autoplay; fullscreen; picture-in-picture; gyroscope; accelerometer; clipboard-write; encrypted-media; web-share'
+                        frameborder='0'
+                        style='position:absolute;top:0;left:0;width:100%;height:100%;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);'></iframe>
+                </div>
+            </div>
+
+            <h2>I Love You, Royy ❤️</h2>
+            <p>Here's to many more years together.</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

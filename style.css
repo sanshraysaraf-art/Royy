@@ -1,0 +1,1406 @@
+/* Global Styles */
+:root {
+    /* Rose Gold & Magnificent Theme */
+    --primary-color: #d4af37;
+    /* Gold Accent */
+    --secondary-color: #b76e79;
+    /* Rose Gold */
+    --accent-color: #fce4ec;
+    /* Soft Pink */
+    --text-color: #5d4037;
+    /* Deep Warm Brown */
+    /* --- THEME: Constellation & Silver --- */
+    --primary-color: #E0E0E0;
+    /* Bright Silver */
+    --secondary-color: #A9A9A9;
+    /* Darker Silver */
+    --accent-color: #FFFFFF;
+    /* Pure White Sparkle */
+    --bg-color: #050505;
+    /* Deep Space Black */
+    --text-color: #F0F0F0;
+    --neon-glow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(192, 192, 192, 0.5);
+
+    /* Legacy variables mapping to new theme */
+    --rose-gold: #C0C0C0;
+    /* Overriding Rose Gold to Silver */
+    --gold: #E8E8E8;
+    /* Overriding Gold to Platinum/Silver */
+    --cream: #F5F5F5;
+    --deep-blue: #0a0a0a;
+    /* Almost black */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    /* Default for Terminal */
+    background-color: var(--bg-color);
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 3px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    background-attachment: fixed;
+    /* Parallax-like fixed stars */
+    color: var(--text-color);
+    overflow-x: hidden;
+    /* Critical: Stops the giant horizontal scrollbar */
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background 2s ease;
+}
+
+/* --- Global Minimalistic Twinkling Stars (Gold & Silver Edition) --- */
+#global-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: transparent;
+}
+
+/* THE MOON */
+body::before {
+    content: '';
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Crescent Magic: The shadow creates the shape */
+    box-shadow: -10px 8px 0 0 #fffcd1;
+    filter: drop-shadow(0 0 10px rgba(255, 252, 209, 0.6)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+    z-index: -2;
+    /* Behind everything */
+    transform: rotate(-15deg);
+    opacity: 0.9;
+}
+
+#global-stars::after,
+#global-stars::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+}
+
+/* Small Silver & White Stars */
+#global-stars::after {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow:
+        10vw 10vh #fff, 20vw 80vh #fff, 40vw 30vh #C0C0C0,
+        80vw 10vh #fff, 90vw 50vh #fff, 60vw 90vh #C0C0C0,
+        30vw 20vh #fff, 70vw 40vh #C0C0C0, 10vw 60vh #fff,
+        50vw 10vh #fff, 85vw 85vh #C0C0C0, 35vw 45vh #fff,
+        5vw 5vh #fff, 95vw 95vh #fff, 50vw 50vh #C0C0C0,
+        15vw 35vh #fff, 75vw 15vh #fff, 25vw 95vh #C0C0C0;
+    animation: twinkle 4s infinite ease-in-out alternate;
+    opacity: 0.6;
+}
+
+/* Medium Golden Flow Stars */
+#global-stars::before {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow:
+        15vw 15vh rgba(255, 215, 0, 0.8), 65vw 25vh rgba(255, 223, 0, 0.8),
+        85vw 65vh rgba(255, 215, 0, 0.8), 25vw 75vh rgba(255, 223, 0, 0.8),
+        55vw 55vh rgba(255, 215, 0, 0.8), 5vw 90vh rgba(255, 223, 0, 0.9),
+        95vw 20vh rgba(255, 215, 0, 0.9), 45vw 85vh rgba(255, 223, 0, 0.8);
+    animation: twinkleGold 5s infinite ease-in-out alternate-reverse;
+    opacity: 0.5;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes twinkleGold {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.8);
+        box-shadow:
+            15vw 15vh rgba(255, 215, 0, 0.8), 65vw 25vh rgba(255, 223, 0, 0.8),
+            85vw 65vh rgba(255, 215, 0, 0.8), 25vw 75vh rgba(255, 223, 0, 0.8),
+            55vw 55vh rgba(255, 215, 0, 0.8), 5vw 90vh rgba(255, 223, 0, 0.9),
+            95vw 20vh rgba(255, 215, 0, 0.9), 45vw 85vh rgba(255, 223, 0, 0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+        /* Add a faint glow via shadow spread increase during pulse */
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+}
+
+/* ROYAL NIGHT THEME (Activated via JS) */
+body.night-mode {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    /* Deep Space/Sea */
+    color: #fff;
+    animation: none;
+    /* Static or different animation */
+}
+
+/* Adjust text colors in night mode */
+body.night-mode .title {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+body.night-mode h1,
+body.night-mode h2,
+body.night-mode h3 {
+    color: #d4af37;
+    /* Gold headings */
+}
+
+body.night-mode p {
+    color: #e0e0e0;
+}
+
+body.night-mode .glass-panel {
+    background: rgba(0, 0, 0, 0.4);
+    /* Dark Glass */
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    /* Gold border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+body.night-mode .memory-card .photo-frame {
+    background: #000;
+    border: 1px solid #d4af37;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Hacker Intro Theme */
+#hacker-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff00;
+    /* Hacker Green */
+    transition: opacity 1s ease-out;
+}
+
+#hacker-intro.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.terminal-container {
+    width: 80%;
+    max-width: 800px;
+    /* Enable Scrolling */
+    max-height: 80vh;
+    overflow-y: auto;
+    /* Keep it looking good */
+    text-align: left;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 20px #00ff00;
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+
+    /* Scrollbar styling for Webkit */
+    scrollbar-width: thin;
+    scrollbar-color: #00ff00 #000;
+}
+
+/* Custom Scrollbar */
+.terminal-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-container::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.terminal-container::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 4px;
+}
+
+.cursor {
+    display: none;
+    /* Removed per user request due to alignment issues */
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+#command-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#command-line.hidden {
+    display: none;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#hacker-input {
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    flex-grow: 1;
+    outline: none;
+    caret-color: #00ff00;
+}
+
+#hacker-hint {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #004400;
+    /* Darker green for subtlety */
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+#hacker-hint.visible {
+    opacity: 0.7;
+    animation: pulseHint 2s infinite;
+}
+
+@keyframes pulseHint {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+#skip-intro-btn {
+    display: block;
+    margin: 2rem auto;
+    /* Center button */
+    background: transparent;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0;
+    transition: all 0.5s;
+    width: fit-content;
+}
+
+#skip-intro-btn.visible {
+    opacity: 1;
+}
+
+#skip-intro-btn:hover {
+    background: #00ff00;
+    color: #000;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+/* Constellation Hero */
+#constellation-hero {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    /* Deep Space */
+    position: relative;
+    overflow: hidden;
+    display: none;
+    /* Controlled by JS */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#constellation-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+body.locked {
+    overflow: hidden;
+    height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+}
+
+/* Balloons */
+#balloons-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 50px;
+    height: 70px;
+    background-color: var(--secondary-color);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    animation: floatUp 15s linear forwards;
+    opacity: 0.8;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+/* Hero */
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* --- CAKE SECTION (Redesigned: Silver & Space) --- */
+#cake-section {
+    min-height: 100vh;
+    display: flex;
+    /* Flex to center everything */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Transparent background to show body stars */
+    background: transparent;
+    position: relative;
+    padding: 2rem;
+    text-align: center;
+}
+
+.wish-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    /* Mobile scaled */
+    margin-bottom: 2rem;
+    font-weight: 700;
+
+    /* Silver Gradient Text */
+    background: linear-gradient(to right, #cfc7f8 0%, #ebbba7 100%);
+    /* Subtle pastel/silver mix */
+    background: linear-gradient(to bottom, #ffffff 0%, #c0c0c0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+@media (max-width: 768px) {
+    .wish-message {
+        font-size: 2.5rem;
+    }
+}
+
+.title {
+    font-size: 5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-out;
+}
+
+.highlight {
+    color: var(--secondary-color);
+    font-style: italic;
+    background: -webkit-linear-gradient(45deg, #b76e79, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+#unlock-btn {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    border: none;
+    padding: 18px 50px;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+#unlock-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(183, 110, 121, 0.6);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(183, 110, 121, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(183, 110, 121, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(183, 110, 121, 0);
+    }
+}
+
+/* Trivia Gate */
+#trivia-gate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Centering */
+    z-index: 2000;
+    padding: 20px;
+    /* Buffer */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s;
+}
+
+#trivia-gate.hidden {
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+#trivia-gate.unlocked {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.trivia-content {
+    background: rgba(10, 10, 15, 0.9);
+    /* Dark Space Glass */
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    border: 1px solid rgba(192, 192, 192, 0.3);
+    /* Silver Border */
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Premium gradient border top - Update to Silver/Space */
+.trivia-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    /* Thinner */
+    background: linear-gradient(90deg, #FFFFFF, #C0C0C0);
+    z-index: 5;
+}
+
+.trivia-header {
+    padding: 2rem 2rem 1rem 2rem;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+}
+
+#quiz-questions {
+    padding: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.submit-section {
+    padding: 1.5rem 2rem 2rem 2rem;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(192, 192, 192, 0.1);
+    background: transparent;
+    /* No white footer */
+}
+
+.trivia-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Question Container */
+.question-block {
+    margin-bottom: 2rem;
+    text-align: left;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(192, 192, 192, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    color: var(--text-color);
+}
+
+.question-block h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.options-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.option-btn {
+    padding: 15px;
+    border: 1px solid rgba(192, 192, 192, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+    /* Dark glass button */
+    color: #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.option-btn:hover {
+    background: rgba(192, 192, 192, 0.1);
+    border-color: #fff;
+    color: #fff;
+}
+
+.option-btn.selected {
+    background: var(--primary-color);
+    color: #000;
+    /* Invert for selected */
+    border-color: #fff;
+    font-weight: bold;
+}
+
+
+
+
+.option-btn:hover {
+    border-color: var(--secondary-color);
+    background: #fff5f6;
+}
+
+.option-btn.selected {
+    background: var(--secondary-color);
+    color: #fff;
+    border-color: var(--secondary-color);
+}
+
+.option-btn.wrong-mark {
+    border-color: var(--error-color);
+    color: var(--error-color);
+    background: #ffebee;
+}
+
+#submit-quiz-btn {
+    background: var(--text-color);
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+#submit-quiz-btn:hover {
+    transform: scale(1.05);
+}
+
+
+/* Protected Content Areas */
+.scroll-indicator-container {
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: -50px;
+    z-index: 5;
+    position: relative;
+}
+
+.scroll-indicator {
+    animation: bounce 2s infinite;
+    color: var(--text-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* Puzzle Section */
+#puzzle-section {
+    padding: 4rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.wide-puzzle .puzzle-container {
+    max-width: 900px;
+    /* Wider for side-by-side */
+}
+
+.puzzle-container {
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.puzzle-container h2 {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.puzzle-container p {
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+body.night-mode .puzzle-container p {
+    color: #ccc;
+}
+
+.puzzle-reference {
+    margin-bottom: 2rem;
+}
+
+.puzzle-reference p {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.puzzle-reference img {
+    width: 150px;
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 10px;
+    border: 3px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.night-mode .puzzle-reference img {
+    border-color: #d4af37;
+}
+
+#jigsaw-game-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+/* Source Container (The Pile) */
+#puzzle-source-container {
+    width: 350px;
+    /* Slightly wider to accommodate taller pieces scattered */
+    min-height: 400px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px dashed var(--secondary-color);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 5px;
+}
+
+/* Target Board */
+#puzzle-board {
+    width: 288px;
+    height: 512px;
+    position: relative;
+    background: #eee;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.drop-zone {
+    width: 96px;
+    height: calc(512px / 3);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+/* The Draggable Piece */
+.puzzle-piece {
+    width: 96px;
+    height: calc(512px / 3);
+    background-image: url("image/2.jpeg");
+    background-size: 288px 512px;
+    cursor: grab;
+    transition: transform 0.1s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.puzzle-piece:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+    z-index: 100;
+}
+
+.puzzle-piece.placed {
+    cursor: default;
+    box-shadow: none;
+    border: none;
+}
+
+#puzzle-message {
+    margin-top: 2rem;
+    animation: fadeIn 1s;
+    width: 100%;
+}
+
+#puzzle-message.hidden {
+    display: none;
+}
+
+#puzzle-message h3 {
+    color: var(--success-color);
+    font-size: 1.8rem;
+}
+
+@media (max-width: 700px) {
+    #jigsaw-game-area {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Scale down the entire board to fit mobile width */
+    #puzzle-board {
+        transform: scale(0.65);
+        transform-origin: top center;
+        margin-bottom: -150px;
+        /* Compensate for scale shrinkage gap */
+    }
+
+    #puzzle-source-container {
+        width: 90vw;
+        max-width: 350px;
+        min-height: 200px;
+    }
+}
+
+
+/* Cake Section */
+#cake-section {
+    padding: 5rem 0;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Soft mesh behind cake */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 70%);
+}
+
+.cake-container h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+/* Existing Cake Styles (kept same but cleaner) */
+.cake {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.plate {
+    position: absolute;
+    bottom: 0;
+    left: -25px;
+    width: 300px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.layer {
+    position: absolute;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.layer-bottom {
+    bottom: 10px;
+    height: 60px;
+    background-color: #f8bbd0;
+}
+
+.layer-middle {
+    bottom: 70px;
+    height: 60px;
+    background-color: #f48fb1;
+}
+
+.layer-top {
+    bottom: 130px;
+    height: 60px;
+    background-color: #f06292;
+}
+
+.icing {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 20px;
+    background-color: #f06292;
+    border-radius: 10px 10px 0 0;
+}
+
+.drip {
+    position: absolute;
+    top: 10px;
+    width: 20px;
+    height: 30px;
+    background-color: #f06292;
+    border-radius: 0 0 10px 10px;
+}
+
+/* --- FINALE SLIDESHOW (Horizontal Slider) --- */
+
+/* --- FINALE SLIDESHOW (Horizontal Slider) --- */
+#finale-slideshow-container {
+    width: 95vw;
+    max-width: 800px;
+    height: 60vh;
+    /* Taller for mobile */
+    margin: 3rem auto;
+    border-radius: 20px;
+    overflow: hidden !important;
+    position: relative;
+    /* Anchor for absolute children */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 4px solid var(--primary-color);
+    /* Silver per root var */
+    background: #000;
+    /* Letterbox background */
+}
+
+/* Single Active Slide Style (No more Flex Track) */
+/* Elements will be swapped in/out or fade in/out */
+.slideshow-content {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* CRITICAL: Ensure full visibility without cropping */
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+}
+
+/* Dots Indicator (Optional, but nice for track feel) */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: #fff;
+}
+
+.drip1 {
+    left: 40px;
+    height: 40px;
+}
+
+.drip2 {
+    left: 120px;
+    height: 50px;
+}
+
+.drip3 {
+    left: 200px;
+    height: 30px;
+}
+
+.candle {
+    position: absolute;
+    top: -30px;
+    left: 115px;
+    width: 20px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.flame {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 20px;
+    background-color: #ff9800;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s infinite;
+    transition: opacity 0.5s;
+}
+
+.flame.out {
+    opacity: 0;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Memory Lane */
+#memory-lane {
+    padding: 5rem 2rem;
+    position: relative;
+}
+
+#memory-lane h2 {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 5rem;
+    color: var(--secondary-color);
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.memory-card {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.memory-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.memory-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.photo-frame {
+    flex: 1;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transform: rotate(-3deg);
+    transition: transform 0.5s;
+    border-radius: 5px;
+}
+
+.memory-card.reverse .photo-frame {
+    transform: rotate(3deg);
+}
+
+.photo-frame:hover {
+    transform: rotate(0) scale(1.05);
+    z-index: 10;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+.description {
+    flex: 1;
+}
+
+.description h3 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.description p {
+    font-size: 1.2rem;
+    color: #666;
+    font-family: var(--font-heading);
+    font-style: italic;
+}
+
+/* Footer */
+#footer {
+    text-align: center;
+    padding: 6rem;
+    color: var(--secondary-color);
+}
+
+#footer h2 {
+    font-size: 3rem;
+}
+
+/* Responsive */
+/* Responsive */
+@media (max-width: 768px) {
+
+    /* Global Mobile Adjustments */
+    .title {
+        font-size: 3rem;
+        /* Scaled down from 5rem */
+        padding: 0 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    #unlock-btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+    }
+
+    /* Hacker Terminal */
+    .terminal-container {
+        width: 95%;
+        max-width: 100%;
+        height: 70vh;
+        /* More vertical space */
+        padding: 15px;
+        font-size: 0.9rem;
+        /* Slightly smaller monospace */
+    }
+
+    #hacker-input {
+        font-size: 16px;
+        /* CRITICAL: Prevents iOS Zoom on focus */
+    }
+
+    /* Trivia Gate */
+    .trivia-content {
+        width: 95%;
+        padding: 0;
+        max-height: 90vh;
+        /* Maximize height */
+    }
+
+    .trivia-header {
+        padding: 1.5rem 1rem 1rem 1rem;
+    }
+
+    .trivia-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .question-block {
+        padding: 1rem;
+    }
+
+    .question-block h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Cake Section */
+    .cake {
+        transform: scale(0.8);
+        /* Scale down slightly for narrow screens */
+        transform-origin: center bottom;
+    }
+
+    /* Memory Lane */
+    #memory-lane h2 {
+        font-size: 2.5rem;
+    }
+
+    .gallery {
+        gap: 4rem;
+    }
+
+    .memory-card,
+    .memory-card.reverse {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .photo-frame {
+        transform: rotate(0) !important;
+        /* Reset rotation for clean mobile stack */
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .description h3 {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+
+    /* Jigsaw Puzzle Mobile Optimization */
+    #puzzle-section {
+        padding: 2rem 0;
+    }
+
+    .puzzle-container {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .puzzle-container h2 {
+        font-size: 2rem;
+    }
+
+    #jigsaw-game-area {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    /* Important: Scale the board to fit iPhone width (approx 360-390px) 
+       Board is 288px wide + 10px borders = ~300px. It should fit natively.
+       If < 320px devices (rare), we scale. 
+    */
+    #puzzle-board {
+        margin-bottom: 0;
+        /* Ensure touch action allows dragging pieces but not scrolling board area inadvertently */
+        touch-action: none;
+    }
+
+    #puzzle-source-container {
+        width: 95%;
+        max-width: 350px;
+        min-height: 180px;
+    }
+
+    /* Finale Slideshow */
+    #finale-slideshow-container {
+        width: 95vw;
+        height: 60vh;
+        /* Taller on mobile for portfolio feel */
+        margin: 2rem auto;
+    }
+
+    /* Footer */
+    #footer {
+        padding: 4rem 1rem;
+    }
+
+    #footer h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Extra Small Devices (iPhone SE, etc) */
+@media (max-width: 370px) {
+    #puzzle-board {
+        transform: scale(0.9);
+        transform-origin: center top;
+    }
+}
