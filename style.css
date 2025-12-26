@@ -907,7 +907,7 @@ body.night-mode .puzzle-reference img {
 .puzzle-piece {
     width: 96px;
     height: calc(512px / 3);
-    background-image: url("image/2.jpeg");
+    background-image: url("2.jpeg");
     background-size: 288px 512px;
     cursor: grab;
     transition: transform 0.1s;
@@ -1404,3 +1404,4 @@ body.night-mode .puzzle-reference img {
         transform-origin: center top;
     }
 }
+
